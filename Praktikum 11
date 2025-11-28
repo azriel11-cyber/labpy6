@@ -1,0 +1,72 @@
+# Program Daftar Nilai Mahasiswa
+# Menggunakan fungsi: tambah(), tampilkan(), hapus(), ubah()
+
+mahasiswa = {}   # Dictionary untuk menyimpan data mahasiswa
+
+
+# Fungsi menambah data
+def tambah():
+    print("\n=== TAMBAH DATA MAHASISWA ===")
+    nama = input("Masukkan nama: ")
+    nilai = input("Masukkan nilai: ")
+
+    mahasiswa[nama] = nilai
+    print(f"Data '{nama}' berhasil ditambahkan!\n")
+
+
+# Fungsi menampilkan data
+def tampilkan():
+    print("\n=== DAFTAR NILAI MAHASISWA ===")
+    if not mahasiswa:
+        print("Belum ada data.\n")
+    else:
+        for nama, nilai in mahasiswa.items():
+            print(f"Nama : {nama} | Nilai : {nilai}")
+        print()
+
+
+# Fungsi menghapus data berdasarkan nama
+def hapus(nama):
+    if nama in mahasiswa:
+        del mahasiswa[nama]
+        print(f"Data '{nama}' berhasil dihapus.\n")
+    else:
+        print(f"Data dengan nama '{nama}' tidak ditemukan.\n")
+
+
+# Fungsi mengubah data berdasarkan nama
+def ubah(nama):
+    if nama in mahasiswa:
+        nilai_baru = input(f"Masukkan nilai baru untuk {nama}: ")
+        mahasiswa[nama] = nilai_baru
+        print(f"Data '{nama}' berhasil diubah.\n")
+    else:
+        print(f"Data dengan nama '{nama}' tidak ditemukan.\n")
+
+
+# Menu program
+while True:
+    print("=== MENU PROGRAM DATA NILAI MAHASISWA ===")
+    print("1. Tambah Data")
+    print("2. Tampilkan Data")
+    print("3. Hapus Data")
+    print("4. Ubah Data")
+    print("5. Keluar")
+
+    pilihan = input("Pilih menu (1-5): ")
+
+    if pilihan == "1":
+        tambah()
+    elif pilihan == "2":
+        tampilkan()
+    elif pilihan == "3":
+        nama = input("Masukkan nama yang ingin dihapus: ")
+        hapus(nama)
+    elif pilihan == "4":
+        nama = input("Masukkan nama yang ingin diubah: ")
+        ubah(nama)
+    elif pilihan == "5":
+        print("Program selesai.")
+        break
+    else:
+        print("Pilihan tidak valid!\n")
